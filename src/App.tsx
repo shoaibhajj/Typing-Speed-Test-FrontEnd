@@ -31,7 +31,7 @@ function App() {
   const [wpm, setWpm] = useState(0);
   const [Time, setTime] = useState<number>(60);
   const isRTL = language === "arabic";
-   const { width, height } = useWindowSize();
+  const { width, height } = useWindowSize();
 
   const fetchWords = () => {
     fetch(
@@ -66,6 +66,13 @@ function App() {
     setCorrectWordArray([]);
     setCorrectCharArray([]);
   };
+  useEffect(() => {
+    if (
+      timeEnded &&
+      (correctWordArray.length > 0 || correctCharArray.length > 0)
+    )
+      setUserInput("Completed...");
+  }, [timeEnded]);
 
   const prosessInput = (value: string) => {
     if (activeWordIndex === newWords.length || timeEnded) {
