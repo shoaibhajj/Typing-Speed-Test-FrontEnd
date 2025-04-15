@@ -5,6 +5,8 @@ import Timer from "./components/Timer";
 import Result from "./components/Result";
 import LanguageSelector from "./components/LanguageSelector";
 import CompetitiveHeading from "./components/CompetitiveHeading";
+import { useWindowSize } from "react-use";
+import Confetti from "react-confetti";
 
 // const getCloud = () =>
 //   "codemnan shoaib payload react tailwind tesla javascript word mars  wood coding html dogcoin bticoin macbook".split(
@@ -29,6 +31,7 @@ function App() {
   const [wpm, setWpm] = useState(0);
   const [Time, setTime] = useState<number>(60);
   const isRTL = language === "arabic";
+   const { width, height } = useWindowSize();
 
   const fetchWords = () => {
     fetch(
@@ -108,6 +111,9 @@ function App() {
 
   return (
     <div className=" bg-[#111111] h-full w-full min-h-screen ">
+      {userInput === "Completed..." && (
+        <Confetti width={width} height={height} />
+      )}
       <div className=" container  md:max-w-4xl w-full h-full mx-auto pt-20  text-white  justify-center items-center">
         <div className="flex flex-col justify-center items-center ">
           <h1 className="text-4xl font-semibold p-4 text-center">

@@ -1,4 +1,4 @@
-import React, { SetStateAction } from "react";
+import  { SetStateAction } from "react";
 
 const languages = [
   { name: "Afrikaans", code: "AF", flag: "🇿🇦" },
